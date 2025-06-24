@@ -1,1 +1,5 @@
 export * from "./BLEMIDIStreamParser"
+export * from "./BLEMIDI"
+export * from "./BLEMIDIDevice"
+export * from "./BLEMIDIConstants"
+export * from "./MIDIEvents"

@@ -8,7 +8,7 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "declaration": true,
-    "lib": ["es2017"],
+    "lib": ["es2017", "DOM"],
     "outDir": "dist",
     "types": ["node", "jest", "web-bluetooth"]
   },

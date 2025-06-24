@@ -27,8 +27,8 @@ export class ByteReader {
     if ((b & 0xc0) !== 0x80) {
       throw new Error(
         `Invalid MIDI packet: expected header byte to start with 10, got ${b.toString(
-          16
-        )}`
+          16,
+        )}`,
       )
     }
     return b & 0x3f
@@ -40,8 +40,8 @@ export class ByteReader {
     if ((b & 0x80) !== 0x80) {
       throw new Error(
         `Invalid MIDI packet: expected timestamp byte to start with 10, got ${b.toString(
-          16
-        )}`
+          16,
+        )}`,
       )
     }
     return b & 0x7f
@@ -71,7 +71,7 @@ export class ByteReader {
       throw new Error(
         `Invalid read: requested ${length} bytes, but only ${
           this.dataView.byteLength - this.pos
-        } bytes available`
+        } bytes available`,
       )
     }
     const bytes = extractUint8Range(this.dataView, this.pos, length)
@@ -111,7 +111,7 @@ function getSystemCommonLength(status: number): number {
 function extractUint8Range(
   view: DataView,
   start: number,
-  length: number
+  length: number,
 ): Uint8Array {
   return new Uint8Array(view.buffer, view.byteOffset + start, length)
 }

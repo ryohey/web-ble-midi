@@ -27,7 +27,7 @@ export class BLEMIDIStreamParser {
     let state = this.sysExContext
       ? sysExHeaderState(
           this.sysExContext.timestamp,
-          this.sysExContext.partialSysExData
+          this.sysExContext.partialSysExData,
         )
       : headerState
 
@@ -163,8 +163,8 @@ const systemMessageState =
     if ((nextByte & 0x80) !== 0x80) {
       throw new Error(
         `Invalid MIDI packet: expected next byte to be a timestamp, got ${nextByte.toString(
-          16
-        )}`
+          16,
+        )}`,
       )
     }
     return [message, timestampState(timestamp, runningStatus)]
@@ -270,7 +270,7 @@ const sysExEndState =
 
 function getFixedTimestamp(
   lastTimestamp: number,
-  timestampLow: number
+  timestampLow: number,
 ): number {
   const timestamp = (lastTimestamp & 0x70) | timestampLow
   if (timestamp < lastTimestamp) {
@@ -294,7 +294,7 @@ const timestampState =
       } else if (nextByte === 0xf7) {
         // If SysEx end (0xf7) is received without SysEx start (0xf0), it's an error
         throw new Error(
-          `Invalid MIDI packet: SysEx end (0xf7) received without SysEx start (0xf0)`
+          `Invalid MIDI packet: SysEx end (0xf7) received without SysEx start (0xf0)`,
         )
       } else {
         return [null, systemMessageState(timestamp, runningStatus)]
