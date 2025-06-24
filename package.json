@@ -1,0 +1,43 @@
+{
+  "name": "web-ble-midi",
+  "version": "0.1.0",
+  "description": "Web Bluetooth MIDI Library",
+  "keywords": [
+    "web",
+    "bluetooth",
+    "midi",
+    "web bluetooth",
+    "web bluetooth midi",
+    "ble",
+    "ble midi",
+    "web ble",
+    "web ble midi"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest"
+  },
+  "author": "ryohey",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryohey/web-ble-midi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ryohey/web-ble-midi/issues"
+  },
+  "homepage": "https://github.com/ryohey/web-ble-midi/",
+  "devDependencies": {
+    "@types/jest": "27.4.1",
+    "@types/node": "17.0.30",
+    "@types/web-bluetooth": "^0.0.21",
+    "jest": "^27.5.1",
+    "rollup": "2.71.1",
+    "rollup-plugin-ts": "^2.0.7",
+    "ts-jest": "^27.1.4",
+    "typescript": "4.6.4"
+  }
+}
