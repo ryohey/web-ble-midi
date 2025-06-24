@@ -4,6 +4,8 @@
 
 A library for easily handling BLE MIDI input in the browser using Web Bluetooth API.
 
+[Live Demo](https://ryohey.github.io/web-ble-midi/) - Try it with your BLE MIDI device!
+
 ## Installation
 
 ```bash

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web BLE MIDI Demo</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Web BLE MIDI Demo</h1>
+      <p>Connect to BLE MIDI devices and visualize MIDI messages</p>
+    </header>
+
+    <div class="device-controls">
+      <button id="connectButton" class="button primary">Connect</button>
+      <button id="disconnectButton" class="button secondary" disabled>Disconnect</button>
+      <div id="statusIndicator" class="status-indicator disconnected">
+        <span class="status-text">Not Connected</span>
+      </div>
+    </div>
+
+    <div class="device-info">
+      <div class="info-item">
+        <div class="label">Device Name:</div>
+        <div id="deviceName" class="value">-</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Device ID:</div>
+        <div id="deviceId" class="value">-</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Connection Status:</div>
+        <div id="connectionStatus" class="value">Not Connected</div>
+      </div>
+    </div>
+
+    <div class="midi-display">
+      <h2>MIDI Messages</h2>
+      <div class="controls">
+        <button id="clearButton" class="button small">Clear</button>
+        <label>
+          <input type="checkbox" id="autoScroll" checked>
+          Auto-scroll
+        </label>
+        <div class="format-selector">
+          Display Format:
+          <label><input type="radio" name="format" value="hex" checked> HEX</label>
+          <label><input type="radio" name="format" value="parsed"> Parsed</label>
+        </div>
+      </div>
+      <div id="midiMessages" class="messages-container"></div>
+    </div>
+
+    <div class="midi-stats">
+      <h2>Statistics</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-label">Total Messages</div>
+          <div id="totalMessages" class="stat-value">0</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Note On</div>
+          <div id="noteOnCount" class="stat-value">0</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Note Off</div>
+          <div id="noteOffCount" class="stat-value">0</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-label">Control Change</div>
+          <div id="ccCount" class="stat-value">0</div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        <a href="https://github.com/ryohey/web-ble-midi" target="_blank">web-ble-midi</a>
+        - MIT License
+      </p>
+    </footer>
+  </div>
+</body>
+</html>

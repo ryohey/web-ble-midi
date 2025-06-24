@@ -19,7 +19,8 @@
   "scripts": {
     "build": "rollup -c",
     "format": "prettier --write 'src/**/*.ts'",
-    "test": "jest"
+    "test": "jest",
+    "build:demo": "mkdir -p dist-demo && cp -r demo/* dist-demo/ && cp -r dist dist-demo/"
   },
   "author": "ryohey",
   "license": "MIT",
