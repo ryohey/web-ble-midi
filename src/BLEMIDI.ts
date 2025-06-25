@@ -39,7 +39,7 @@ export const BLEMIDI = {
     }
 
     // Create filters based on options
-    const filters: Array<BluetoothRequestDeviceFilter> = []
+    const filters: Array<BluetoothLEScanFilter> = []
     if (options.name) {
       filters.push({ name: options.name })
     }
@@ -49,23 +49,14 @@ export const BLEMIDI = {
 
     // Request device from the browser
     const requestOptions: RequestDeviceOptions = {
-      filters: filters.length > 0 ? filters : undefined,
+      filters,
       optionalServices: [MIDI_SERVICE_UUID],
     }
 
-    // If no filters are specified, use acceptAllDevices
-    if (!filters.length) {
-      requestOptions.acceptAllDevices = true
-    }
+    // Request a device through the browser's UI
+    const device = await navigator.bluetooth.requestDevice(requestOptions)
 
-    try {
-      // Request a device through the browser's UI
-      const device = await navigator.bluetooth.requestDevice(requestOptions)
-
-      // Return a BLEMIDIDevice instance wrapping the selected device
-      return new BLEMIDIDevice(device)
-    } catch (error) {
-      throw error
-    }
+    // Return a BLEMIDIDevice instance wrapping the selected device
+    return new BLEMIDIDevice(device)
   },
 }
