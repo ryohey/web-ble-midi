@@ -39,7 +39,10 @@ export const BLEMIDI = {
     }
 
     // Create filters based on options
-    const filters: Array<BluetoothLEScanFilter> = []
+    const filters: Array<BluetoothLEScanFilter> = [
+      { services: [MIDI_SERVICE_UUID] },
+    ]
+
     if (options.name) {
       filters.push({ name: options.name })
     }
@@ -47,14 +50,10 @@ export const BLEMIDI = {
       filters.push({ namePrefix: options.namePrefix })
     }
 
-    // Request device from the browser
-    const requestOptions: RequestDeviceOptions = {
-      filters,
-      optionalServices: [MIDI_SERVICE_UUID],
-    }
-
     // Request a device through the browser's UI
-    const device = await navigator.bluetooth.requestDevice(requestOptions)
+    const device = await navigator.bluetooth.requestDevice({
+      filters,
+    })
 
     // Return a BLEMIDIDevice instance wrapping the selected device
     return new BLEMIDIDevice(device)
